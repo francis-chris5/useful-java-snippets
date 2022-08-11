@@ -79,46 +79,9 @@ public class Person implements Serializable {
         }
     }
     
-    
-     public String toXML(boolean fullDocument){
-        if(fullDocument){
-            try{
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                XMLStreamWriter xml = XMLOutputFactory.newInstance().createXMLStreamWriter(stream);
-                Field[] fields = this.getClass().getDeclaredFields();
-                xml.writeStartDocument();
-                xml.writeStartElement(this.getClass().getSimpleName());
-                for(Field f : fields){
-                    if(!f.getType().isArray()){
-                        xml.writeStartElement(f.getName());
-                        xml.writeCharacters(f.get(this).toString());
-                        xml.writeEndElement();
-                    }
-                    else{
-                        xml.writeStartElement(f.getName());
-                        xml.writeCharacters(" still working on generalizing arrays... ");
-                        xml.writeEndElement();
-                    }
-                }
-                xml.writeEndElement();
-                xml.writeEndDocument();
-                xml.close();
-                return stream.toString();
-            }
-            catch(Exception e){
-                //just move on then
-                return "";
-            }
-        }
-        else{
-            return this.toXML();
-        }
-    }//end toXML()
 
-
-
-    public String toXML(String header){
-        if(!header.equals("")){
+    public String toXML(boolean hasHeader){
+        if(hasHeader){
             String xml = "<?xml version=\"1.0\" ?>";
             xml += this.toXML();
             return xml;
@@ -126,11 +89,11 @@ public class Person implements Serializable {
         else{
             return this.toXML();
         }
-    }
+    }//end toXML()
 
 
     
-    
+
     public String toJSON(){
         Field[] fields = this.getClass().getDeclaredFields();
         String json = "";
