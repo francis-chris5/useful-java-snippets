@@ -1,13 +1,10 @@
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 import java.lang.reflect.Field;
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamWriter;
 
 
-public class Person implements Serializable {
+
+public class Person {
     private String name;
     private int age;
     private String home;
@@ -53,31 +50,29 @@ public class Person implements Serializable {
     
     public String toXML(){
         try{
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            XMLStreamWriter xml = XMLOutputFactory.newInstance().createXMLStreamWriter(stream);
+            String xml = new String();
             Field[] fields = this.getClass().getDeclaredFields();
-            xml.writeStartElement(this.getClass().getSimpleName());
+            xml += "<" + this.getClass().getSimpleName() + ">";
             for(Field f : fields){
                 if(!f.getType().isArray()){
-                    xml.writeStartElement(f.getName());
-                    xml.writeCharacters(f.get(this).toString());
-                    xml.writeEndElement();
+                    xml += "<" + f.getName() + ">";
+                    xml += f.get(this).toString();
+                    xml += "</" + f.getName() + ">";
                 }
                 else{
-                    xml.writeStartElement(f.getName());
-                    xml.writeCharacters(" still working on generalizing arrays... ");
-                    xml.writeEndElement();
+                    xml += "<" + f.getName() + ">";
+                    xml += " still working on generalizing arrays... ";
+                    xml += "</" + f.getName() + ">";
                 }
             }
-            xml.writeEndElement();
-            xml.close();
-            return stream.toString();
+            xml += "</" + this.getClass().getSimpleName() + ">";
+            return xml;
         }
         catch(Exception e){
             //just move on then
             return "";
         }
-    }
+    }//end toXML()
     
 
     public String toXML(boolean hasHeader){
@@ -133,9 +128,9 @@ public class Person implements Serializable {
 
             }
             json += "}";
-            }
+           }
         catch(Exception e){
-            //just move on then
+            // just move on then
         }
         return json;
     }//end toJSON()
