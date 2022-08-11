@@ -27,7 +27,7 @@ Just a bunch of random things to copy and paste (maybe a little modification) to
   <li>toCSV() and toCSV(boolean hasHeader)</li>
     <ul>
       <li>An overloaded method to represent the datafields in CSV form, if you need a header row --I suspect typical use will be an array or list of objects to send to the csv file so the first element would need the header row included-- pass in true as the single parameter.</li>
-      <li>If .csv is the form you need the data in there are definite advantages show up to this super simple format across the board in metrics from storage size to memory consumption</li>
+      <li>If .csv is the form you need the data in, there are definite advantages show up to this super simple format across the board in metrics ranging from storage size to memory consumption.</li>
     </ul>
 </ul>
 
