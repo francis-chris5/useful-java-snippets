@@ -4,6 +4,7 @@ Just a bunch of random things to copy and paste (maybe a little modification) to
 
 <h2>TransferObjects</h2>
 <p>Let's face it, if we're developing an application in Java these days, it's probably going to be mostly servlets running in the cloud somewhere. The classic toString() method doesn't seem quite as useful as it once was, at least not in terms of getting data from the database and across the internet to display in a user's browser --probably dynamically altering the page with AJAX. With this in mind I created a couple of alternative data-object-to-string methods to represent the object in a string much more fitting for this modern scenario. Please note these return strings ready to be transmitted, these methods aren't writing files.</p>
+<p>The methods are included in an example use-case here, but they are completely generalized, so copy and paste these over to any new class file.</p>
 <p>I've only set it up for primitive datatypes so far, so probably still needs some customization for the particular class it's copied and pasted into.</p>
 <p>Still need to generalize arrays (JSON can handle arrays, XML needs a loop to put tags on everything), but that can easily be customized to the class structure these are copied and pasted into for now).</p>
 <ul>
