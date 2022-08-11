@@ -17,7 +17,7 @@ Just a bunch of random things to copy and paste (maybe a little modification) to
 <ul>
   <li>toXML(), toXML(boolean fullDocument), toXML(String header)</li>
     <ul>
-      <li>An overloaded method to represent the object in XML form, if you need the xml header tag pass in any string other than the empty string as the single parameter, and if you need the full document (I haven't really looked into what the writeDocumentEnd() does specifically yet) pass in true as the single paramater.</li>
+      <li>An overloaded method to represent the object in XML form, if you need the xml header tag pass in true as the single paramater --suspected typical usage will have an array or list of data objects but only the first one will need the header tag in the transmission.</li>
       <li>Everytime I take a measurement XML and JSON seem about equivalent across the board, and if the computer's typing the tags for us, the noticable difference is that after the ajax request recieves the data in XML form we work with it using the DOM model, so it is entirely consistent with our Javascript code for working with the HTML document. Consistency is nice sometimes.</li>
     </ul>
   <li>toJSON()</li>
