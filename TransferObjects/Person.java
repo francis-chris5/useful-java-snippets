@@ -113,7 +113,22 @@ public class Person implements Serializable {
         else{
             return this.toXML();
         }
+    }//end toXML()
+
+
+
+    public String toXML(String header){
+        if(!header.equals("")){
+            String xml = "<?xml version=\"1.0\" ?>";
+            xml += this.toXML();
+            return xml;
+        }
+        else{
+            return this.toXML();
+        }
     }
+
+
     
     
     public String toJSON(){
@@ -160,7 +175,7 @@ public class Person implements Serializable {
             //just move on then
         }
         return json;
-    }
+    }//end toJSON()
     
     
     public String toCSV(){
@@ -198,7 +213,29 @@ public class Person implements Serializable {
             //just move on then
         }
         return row;
-    }
+    }//end toCSV()
+
+
+
+    public String toCSV(boolean hasHeader){
+        if(hasHeader){
+            String row = "";
+            Field[] fields = this.getClass().getDeclaredFields();
+            for(int i=0; i<fields.length; i++){
+                if(i != fields.length-1){
+                    row += fields[i].getName() + ",";
+                }
+                else{
+                    row += fields[i].getName() + "\n";
+                }
+            }
+            row += this.toCSV();
+            return row;
+        }
+        else{
+            return this.toCSV();
+        }
+    }//end toCSV()
     
     
     
